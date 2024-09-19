@@ -1,0 +1,25 @@
+# .gitignore
+
+# Dependências do Node.js
+node_modules/
+package-lock.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Diretórios de build
+dist/
+build/
+
+# Arquivos de ambiente
+.env
+
+# IDEs e editores
+.vscode/
+.idea/
+
+# Sistemas operacionais
+.DS_Store
+Thumbs.db
