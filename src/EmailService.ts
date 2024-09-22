@@ -1,8 +1,9 @@
 const nodemailer = require('nodemailer');
 
-// Classe para gerenciar o envio de e-mails
-class EmailService {
-    constructor(user, pass) {
+export default class EmailService {
+    service: string;
+    transporter: any;
+    constructor(readonly user: string, readonly pass: string) {
         this.service = 'gmail';
         this.user = user;
         this.pass = pass;
@@ -18,7 +19,7 @@ class EmailService {
             }
         });
     }
-    async sendEmail(to, subject, text, html = null) {
+    async sendEmail(to: string, subject: string, text: string, html: any = null) {
         const mailOptions = {
             from: this.user,
             to: to,
@@ -26,7 +27,6 @@ class EmailService {
             text: text,
             html: html || text  // Se o HTML não for fornecido, usa o texto como fallback
         };
-       return await this.transporter.sendMail(mailOptions);
+        return await this.transporter.sendMail(mailOptions);
     }
 }
-module.exports = EmailService;

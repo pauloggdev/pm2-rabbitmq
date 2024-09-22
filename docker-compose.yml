@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mysql:8.0    # Você pode especificar uma versão específica do MySQL aqui
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: escolas
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+      command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Montando o script de inicialização
+    networks:
+      - my_network
+    restart: always   # Reinicia o container em caso de falha
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_container
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - my_network
+    restart: always
+
+volumes:
+  db_data:
+
+networks:
+  my_network:
+    driver: bridge

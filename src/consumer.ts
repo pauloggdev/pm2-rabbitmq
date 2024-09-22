@@ -1,6 +1,6 @@
-const cron = require('node-cron');
+import cron from "node-cron"
+import EmailService from "./EmailService";
 
-const EmailService = require('./EmailService')
 const emailService = new EmailService('geral@kima-solucoes.com', '!2024Kima');
 
 async function startConsumer() {
@@ -13,7 +13,6 @@ async function startConsumer() {
             '<h1>Corpo do e-mail em HTML</h1>'
         )
         console.log('Mensagem enviada...');
-
         
     }, {
         timezone: "Africa/Luanda"  // Defina o fuso horário, se necessário

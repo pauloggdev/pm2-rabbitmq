@@ -4,16 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start-consumer": "node ./node_modules/pm2/bin/pm2 start index.js"
+    "start": "tsc index.ts --outDir ./dist && node dist/index.js",
+    "start-consumer": "pm2 start -x --interpreter ts-node src/consumers/validator-student-registration.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.0",
+    "@types/mysql": "^2.15.26",
+    "@types/node-cron": "^3.0.11",
+    "@types/sinon": "^10.0.14",
     "express": "^4.21.0",
+    "jest": "^29.5.0",
     "mysql": "^2.18.1",
+    "mysql2": "^3.11.3",
     "node-cron": "^3.0.3",
-    "pm2": "^5.4.2"
+    "pm2": "^5.4.2",
+    "ts-node": "^10.9.2",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "@types/uuid": "^10.0.0"
   }
 }
