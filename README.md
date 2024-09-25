@@ -8,7 +8,10 @@ A chave privada está no formato PKCS#1 converter para PKCS#8 usando uma ferrame
 
 ```bash
 git clone
+```bash
 npm install
+```bash
 sudo docker compose up
+```bash
 npm start
 
