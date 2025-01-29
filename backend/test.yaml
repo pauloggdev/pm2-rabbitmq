@@ -1,0 +1,11 @@
+config:
+  target: 'http://localhost:3000'  # URL da sua API
+  phases:
+    - duration: 100   # Duração do teste em segundos
+      arrivalRate: 1000 # Requisições por segundo
+  variables:
+    filePath: "/my_document.pdf"
+scenarios:
+  - flow:
+    - get:
+        url: "/getAllStudents"  # Endpoint de cadastro
